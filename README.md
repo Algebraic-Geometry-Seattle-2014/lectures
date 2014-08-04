@@ -5,7 +5,7 @@ This repository contains notes from the morning lectures at the Algebraic Geomet
 
 The speakers were
 
-- Aise Johan de Jong
+- Aise Johan de Jong: Algebraization of Formal Moduli, II
 - Sandor Kovacs
 - Ralph Morrison
 - Runpu Zong
