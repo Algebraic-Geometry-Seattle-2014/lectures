@@ -9,7 +9,7 @@ The speakers were
 - Sandor Kovacs
 - Ralph Morrison
 - Runpu Zong
-- Bianca Viray
+- Bianca Viray: Unramified Brauer classes on cyclic covers of the projective plane
 - Marton Hablicsek
 - Sam Raskin
 - Rekha Thomas
