@@ -15,9 +15,9 @@ The speakers were
 - Bianca Viray: Unramified Brauer classes on cyclic covers of the projective plane
   * PDF scan of notes by Tyler Kelly
 - Marton Hablicsek
-  * Scribe: Martin Ulirsch
-- Sam Raskin
   * Scribe: Adam Boocher
+- Sam Raskin
+  * Scribe: Martin Ulirsch
 - Rekha Thomas
 - John Calabrese
 - Jennifer Park
