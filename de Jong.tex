@@ -1,0 +1,152 @@
+\documentclass{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{eulervm}
+\usepackage{tgpagella}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{xspace}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{fixmath}
+\usepackage{paralist}
+\usepackage{ellipsis}
+\usepackage{mathtools}
+\usepackage{graphicx,subfigure,epic,eepic}
+\usepackage{array}
+\usepackage{tikz-cd}
+
+\usepackage{fixltx2e}
+\usepackage[expansion=false,final]{microtype}
+
+\newtheorem*{thm}{Theorem}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{defn}{Definition}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{ex}{Example}
+
+\newcommand{\X}{\mathfrak{X}\xspace}
+\newcommand{\f}{\mathfrak{f}\xspace}
+
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\colim}{colim}
+
+
+\title{Algebraization of Formal Moduli II}
+\author{Johan de Jong, notes by Matthew Woolf}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Algebraic Spaces}
+
+Throughout, $S$ will be a Noetherian scheme, possibly with additional properties.
+
+Artin's concern with this paper was how to build algebraic spaces.
+
+\begin{defn}
+An fppf sheaf is a presheaf such that for any fppf cover $\{T_i \to T\}$, the natural maps \[X(T) \to \prod X(T_I) \rightrightarrows \prod X(T_i \times T_j) \] form an equalizer diagram.
+\end{defn}
+
+\begin{defn}
+A map $U \to X$ is representable if for any scheme $T$ and map $T \to X$, the fibered product $U \times_X T$ is a scheme.
+\end{defn}
+
+\begin{defn}
+An algebraic space over $S$ is an fppf sheaf $X$ on the category $\mathrm{Sch}/S$ of $S$-schemes such that there is a scheme $U/S$ and a representable surjective \'etale map $U \to X$.
+\end{defn}
+
+Finiteness properties of $X$ are defined by the corresponding properties for $U$. Today, all (possibly formal) schemes and algebraic spaces will be Noetherian and separated.
+
+\section{Formal Algebraic Spaces}
+
+What is a formal algebraic space?
+
+Let $A$ be a Noetherian ring over $S$ complete with respect to the ideal $I$. The formal spectrum $\Spf(A,I)$ will be the colimit of the $\Spec A/I^n$ in the category of sheaves. A formal scheme is a sheaf which is locally $\Spf$ of something.
+
+\begin{defn} A formal algebraic space $\X$ is an fppf sheaf such that there exist $A$, $I$ over $S$ and a representable surjective \'etale map $\Spf(A,I) \to \X$.
+\end{defn}
+
+\begin{ex}
+Let $X$ be an algebraic space, $Y \subset X$ a closed algebraic subspace, then \[\X=\colim Y_n\] is a formal algebraic space, where $Y_n$ is the $n$th infinitesimal neighborhood of $Y \subset X$. We will denote this by $\widehat{X/Y}$.
+\end{ex}
+
+In terms of the functor, maps from a scheme to $\widehat{X/Y}$ are maps to $X$ which set-theoretically land inside $Y$.
+
+\section{Modifications}
+
+\begin{defn}
+
+A modification of algebraic spaces is a proper morphism $f:X' \to X$ and a closed subspace $Y \subset X$ such that the induced map \[ X'-f^{-1}(Y) \to X-Y \] is an isomorphism.
+
+\end{defn}
+
+The question we want to answer today is when do formal modifications extend to honest-to-god modifications. We will see that under reasonable hypotheses, the answer is always, as long as we allow algebraic spaces.
+
+\section{Formal Modifications}
+
+\begin{defn}
+A formal modification is a map $\f:\X' \to \X$ such that
+\begin{enumerate}
+\item $\f$ is representable by an algebraic space, i.e.~for any scheme $T$ with a map $T \to \X$, the fibered product is an algebraic space.
+
+\item $\f$ is proper
+
+\item $\f$ is rig-\'etale, i.e.~for all (not necessarily Cartesian) diagrams 
+
+\begin{tikzcd}
+\Spf(A',I') \arrow{r} \arrow{d} & \X' \arrow{d} \\
+\Spf(A,I) \arrow{r} & \X
+\end{tikzcd}
+where $A'=A[x_1,\ldots,x_r]/J$, $I'=IA'$, the cohomology of the na\"ive cotangent complex \[ J/J' \to \bigoplus A' d x_i\] is killed by $I^c$ for some $c$.
+
+\begin{ex}
+The squaring map from $\mathbb{A}^1$ to the formal completion of $\mathbb{A}^1$ at the origin is rig-\'etale but not \'etale.
+\end{ex}
+
+\item $\f$ is rig-mono, i.e.~the diagonal map $\X' \to \X' \times_\X \X'$ is an isomorphism away from $\X_{red}$.
+
+\item $\f$ is rig-surjective, i.e.~for all complete DVRs $R$, and maps $x:\Spf(R) \to \X$ which do not factor through $\X_{red}$, we can lift $x$ to a point of $\X'$.
+
+\end{enumerate}
+\end{defn}
+
+This is an example of a formal modification which is not a blow-up.
+
+\begin{ex}
+Take an elliptic singularity, blow it up to resolve the singularity and blow up a general point of the exceptional curve. By the Artin modification theorem, we can contract the elliptic curve. The corresponding morphism of formal spaces is not a blow-up.
+\end{ex}
+
+\section{Artin's Modification Theorems}
+
+\begin{thm}[Contraction Theorem]
+Given $X'$ an algebraic space of finite type over $S$ an excellent scheme (e.g.~$S$ finite type over a field or $\mathbb{Z}$), $Y \subset X'$ a closed subspace, and a formal modification $\f:\widehat{X'/Y} \to \X$, there is a modification $f:X' \to X$ with induced formal morphism $\f$.
+\end{thm}
+
+\begin{thm}[Dilatation theorem]
+Given an algebraic space $X$ finite type over an excellent scheme $S$, $Y \subset X$ a closed subspace, and $\f: \X' \to \widehat{X/Y}$ a formal modification, there is a modification $f:X' \to X$ with induced formal morphism $\f$.
+\end{thm}
+
+Artin's original proof of the dilatation theorem uses the contraction theorem, but it is probably actually easier than the contraction theorem.
+
+\begin{ex}
+
+Let $X$ be a variety over the field $k$ and $p$ a $k$-rational point. Assume that $\widehat{\mathcal{O}}_{X,p}=k[[x,y,u,v]]/(xu+yv)$, i.e.~$X$ has a three-dimensional ordinary double point at $p$. Taking the formal completion of the blow up of $\widehat{\mathcal{O}}_{X,p}$ in the ideal $(x,y)$ gives a formal modification. Using the dilatation theorem gives us a small resolution of the double point as an algebraic space.
+
+\end{ex}
+
+Artin's method of proving these theorems was to write down a functor and verify they satisfy his criteria for representability. For dilatations, we define \[X'(Z)=\left \{ (g,\widehat{g}')\mathrm{\,with\,}g:Z \to X,\,\hat{g}':\widehat{Z/g^{-1}(Y)} \to \X'\mathrm{\,such\, that\, all\, the\, natural\, diagrams\, commute.} \right \}\]
+
+Artin's criteria for when a functor is representable by an algebraic space are as follows: it must be a sheaf, be limit-preserving, have good deformation theory, have a representable diagonal, and must satisfy openness of versality. To prove these modification theorems, the hard thing is to show that the functor is limit-preserving.
+
+
+\end{document}
