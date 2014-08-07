@@ -20,8 +20,11 @@ The speakers were
   * Scribe: Martin Ulirsch
 - Rekha Thomas
 - John Calabrese
+  * Scribe: Brian Hwang
 - Jennifer Park
+  * Scribe: Francois Greer
 - Angela Gibney
+  * Scribe: Eric Riedl
 - Aaron Bertram
 - Nathan Pflueger
 - Yiwei She
