@@ -1,0 +1,256 @@
+\documentclass[12pt]{amsart}
+\usepackage{etex}
+\usepackage{amssymb}
+\usepackage{easybmat}
+\usepackage{lscape}
+\usepackage[headings]{fullpage}
+\usepackage{amsfonts}
+\usepackage{paralist}
+\usepackage{xspace}
+\usepackage{euscript}
+\usepackage{color}
+\usepackage{epigraph}
+\usepackage[all]{xy}
+\usepackage[normalem]{ulem}
+\usepackage[colorlinks,pagebackref=true,pdftex]{hyperref}
+\usepackage[alphabetic,backrefs,abbrev,lite]{amsrefs} 
+\newcommand{\comment}[1]{{\color{blue} \sf ($\clubsuit$ #1 $\clubsuit$)}}
+
+\makeatletter
+\@addtoreset{equation}{section}
+\def\theequation{\thesection.\@arabic \c@equation}
+
+\def\theenumi{\@roman\c@enumi}
+\def\@citecolor{blue}
+\def\@linkcolor{blue}
+\def\@urlcolor{blue}
+
+\makeatother
+
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{claim}[equation]{Claim}
+\newtheorem{claim*}{Claim}
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{question}[equation]{Question}
+\newtheorem{goal}[equation]{Goal}
+
+\gdef\qedsymbol{\ensuremath{\blacksquare}}
+\let\endSymbol\qedsymbol
+
+\theoremstyle{definition}
+\newtheorem{remark}[equation]{Remark}
+\newenvironment{rmk}[1][]{\begin{remark}[#1] \pushQED{\qed}}{\popQED \end{remark}}
+\newtheorem{eg}[equation]{Example}
+\newenvironment{example}[1][]{\begin{eg}[#1] \pushQED{\qed}}{\popQED \end{eg}}
+\newtheorem{defn}[equation]{Definition}
+%\newenvironment{defn}[1][]{\begin{definition}[#1]\pushQED{\qed}}{\popQED \end{definition}}
+\newtheorem{notn}[equation]{Notation}
+\newenvironment{notation}[1][]{\begin{notn}[#1]\pushQED{\qed}}{\popQED \end{notn}}
+\newtheorem{obs}[equation]{Observation}
+
+\def\<{\langle}
+\def\>{\rangle}
+\newcommand{\isom}{\cong}
+\newcommand{\lideal}{\langle}
+\newcommand{\rideal}{\rangle}
+\newcommand{\Br}{\operatorname{Br}}
+\newcommand{\Bl}{\operatorname{Bl}}
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\ann}{\operatorname{Ann}}
+\newcommand{\depth}{\operatorname{depth}}
+\newcommand{\height}{\operatorname{ht}}
+\newcommand{\projdim}{\operatorname{pd}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\Cox}{\operatorname{Cox}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\Ext}{\operatorname{Ext}} %done
+\newcommand{\sheafExt}{\mathcal{E}xt}
+\newcommand{\Frac}{\operatorname{Frac}}
+\newcommand{\Hilb}{\operatorname{Hilb}}
+\newcommand{\Hom}{\operatorname{Hom}} %done
+\newcommand{\sheafHom}{\mathcal{H}om}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Gr}{\operatorname{Gr}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\initial}{\operatorname{in}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\image}{\operatorname{image}}
+\newcommand{\NS}{\operatorname{NS}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\QQbar}{{\overline{\mathbb Q}}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\gin}{\operatorname{gin}}
+\newcommand{\reg}{\operatorname{reg}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\supp}{\operatorname{Supp}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\MonOne}{%
+    \left[\left(\begin{smallmatrix} 1\\ 1\end{smallmatrix}\right)\right]}
+\newcommand{\BigMonOne}{\left[\begin{pmatrix} 1\\ 1\end{pmatrix}\right]}
+\newcommand{\gen}{\text{gen}}
+\newcommand{\splice}{\text{splice}}
+\renewcommand{\to}{\longrightarrow}
+\newcommand{\kk}{\kappa}
+\newcommand{\bolda}{\mathbf{a}}
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\BB}{\mathbf{B}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bfF}{\mathbf{F}}
+\newcommand{\bff}{{\boldsymbol{f}}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\fm}{\mathfrak m}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\cO}{{\mathcal{O}}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\Sc}{\mathrm{S}}
+\newcommand{\Hs}{\mathrm{H}}
+\newcommand{\ES}{\mathrm{ES}}
+\newcommand{\Di}{\mathrm{D}}
+\newcommand{\wD}{\widetilde{\mathrm{D}}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\PPb}{\mathbb{P}(\vec{B})}
+\newcommand{\GL}{{\bf GL}}
+\DeclareMathOperator{\Kos}{Kos}
+\DeclareMathOperator{\Seg}{Seg}
+\newcommand{\Sym}{\operatorname{Sym}} %done
+\newcommand{\Syz}{\operatorname{Syz}}
+\newcommand{\defi}[1]{{\bfseries\upshape #1}}
+\newcommand{\defeq}{:=}
+\newcommand{\revdefeq}{=:}
+\newcommand{\Cech}{\v Cech\xspace}
+\newcommand{\Bracket}[1]{\mbox{$\left[\begin{matrix}  #1\end{matrix}
+\right]$}}
+\newcommand{\minus}{\ensuremath{\!\smallsetminus\!}}
+\newcommand{\pdim}{\operatorname{pdim}}
+\newcommand{\EN}{\operatorname{EN}}
+
+\DeclareMathOperator{\Der}{Der}
+\title{Hochschild Cohomology}
+\begin{document}
+\maketitle
+
+References: 
+\begin{itemize}
+\item Weibel \emph{An Introduction to Homological Algebra}
+\item Shinder \emph{Lectures on ``Derived categories of coherent sheaves and phantoms''} \\ \url{http://www.maths.ed.ac.uk/~eshinder/mainz-lectures.htm}
+\item Arinkin and Caldararu \emph{When is the self-intersection of a subvariety a fibration?} \\ \url{http://arxiv.org/abs/1007.1671}
+\end{itemize}
+\section{Definition and Setup}
+Throughout the talk, $k$ will be a field of characteristic zero and $R$ will be an associative unital $k$ algebra (not necessarily commutative), and $R^{op}$ will be the opposite algebra of $R$.   Set $R^e = R\otimes_k R^{op}$.
+
+\begin{defn}
+Take an $R-R$ bimodule $M$.  We define:
+$$HH_*(R,M) = \Tor_*^{R^e} (R,M)$$
+$$HH^*(R,M) = \Ext^*_{R^e} (R,M).$$
+\end{defn}
+\noindent To compute this explicitly, we use the \emph{Bar Resolution} $C^*$
+$$\cdots \to R\otimes R^{\otimes 2} \otimes R\to R\otimes R\otimes R \to R\otimes R \to R$$
+with maps 
+$$a\otimes b \mapsto ab$$
+$$a\otimes r\otimes b \mapsto ar\otimes b - a\otimes rb$$
+$$a\otimes r_1\otimes r_2 \otimes b \mapsto ar_1\otimes r_2\otimes b - a\otimes r_1r_2\otimes b + a\otimes r_1\otimes r_2b$$ etc. 
+The idea is that we can act on both the left and the right. 
+
+Claim: $C^*$ is an exact complex.  In fact, we have a map 
+$$S: R\otimes R^{\otimes n} \otimes R \to R\otimes R^{\otimes n + 1} \otimes R$$
+$$a\otimes a_1\otimes\cdots \otimes a_n \otimes b \mapsto 1\otimes a \otimes a_1\otimes \cdots a_n \otimes b.$$
+It's true that $ds + sd = id$, which is verified by a direct calculation.
+
+\begin{prop}
+$$HH^* (R,M) = H^*(Hom_{R^e}(C^*,M)).$$
+\end{prop}
+
+\section{Some computations}
+For the talk, $M = R$.  
+\medskip 
+
+The zeroth Hochschild cohomology is given by 
+$$HH^0(R) := HH^0(R,R) = \ker (R \to \Hom_k(R,R)) = Z(R)$$
+where the map $R\to \Hom_k(R,R)$ is given by $r\mapsto (s\mapsto sr -rs)$.  If $R$ is commutative then $HH^0(R) = R$.  %Unfortunately the Hochschild Cohomology is not functorial in general, but it is in some settings.  (E.g. it is with respect to Fourier Mukai transformations)
+\medskip
+
+Moving on to $HH^1$.  
+$$HH^1(R) = HZ^1/HB^1$$
+$$HZ^1 = \{ \phi \in \Hom_k(R,M) \ | \ \phi(r_1)r_2 - \phi(r_1r_2)+ r_1\phi(r_2) = 0 \ \mbox{for all } r_i\} = \Der_k R$$
+and $HB^1$ is the set of inner derivations. If $R$ is commutative, then there are no nontrivial derivations so $HH^1 = \Der_k R$.
+\medskip
+
+Next, for $HH^2$ we see that the cycles are given by 
+$$HZ^2 = \{\phi \ | \ r_1\phi(r_2\otimes r_3) - \phi(r_1r_2\otimes r_3) + \phi(r_1\otimes r_2r_3) - \phi(r_1\otimes r_2)r_3 = 0 \}$$
+To understand what this means, we define deformations. 
+\begin{defn}
+A first order deformation of $R$ is a $k[\epsilon]/\epsilon^2$ algebra $R'$ such that 
+\begin{itemize}
+\item $R\otimes_k k[\epsilon]/\epsilon^2 \cong R'$ as $k[\epsilon]/\epsilon^2$ module.
+\item $R' \otimes_{k[\epsilon]/\epsilon^2} k \cong R$ as $k$ algebras.  
+\end{itemize}
+\end{defn}
+We define a multiplication $*$ on $R'$ by 
+$$a*b  = ab + \epsilon \gamma(a\otimes(a\otimes b)$$ for some $k$-linear function $\gamma$.  It turns out that for $*$ to be associative, we precisely need that $\gamma$ is a co-cycle, $\gamma\in HZ^2$.  
+\begin{cor}
+$HH^2(R)$ corresponds to first order deformations of $R$/equivalence.
+\end{cor}
+
+\section{Examples}
+\begin{enumerate}
+\item 
+Let $TV$ be the tensor algebra of $V$.  Then we have an exact sequence
+$$0 \to TV \otimes V \otimes TV \to TV\otimes TV \mapsto TV \to 0$$
+so $HH^2(TV) = 0.$  Hence there are no nontrivial deformations.
+\item 
+Let $Sym(V) = k[x_1,\ldots, x_n] = R$.   Then $R^e = R\otimes_k R = k[x_1,\ldots, x_n, y_1,\ldots, y_n]$.  
+Then a resolution of $R$ as an $R^e$ module is given by the Koszul complex on the $y_i$, but once we take Hom, all the maps become zero, so we have:
+$$HH^i(R) = R^{\oplus {n \choose c}} = Sym_R (\Der_kR[-1]).$$
+More generally, if $R$ is a regular local ring then 
+$$HH^i(R) \cong \bigwedge^i \Der_k R.$$
+\end{enumerate}
+
+\section{Schemes}
+\begin{defn}
+If $\Delta: X \to X\times X$ is the diagonal map then define
+$$HH^*(X) = \Ext^*_{X\times X} (\Delta_* O_X, \Delta_* O_X) = \Ext_X^* (\Delta^*\Delta_* O_X, O_X)$$
+$$HH^*(X) = \Tor_*^{X\times X} (\Delta_* O_X, \Delta_* O_X) = R\Gamma (\Delta_*O_X\otimes^L \Delta_*O_X)$$
+$$= R\Gamma(\Delta_*\Delta^*\Delta_* O_X)$$
+$$= R\Gamma(X,\Delta^*\Delta_* O_X)$$
+\end{defn}
+The object we care about then is $\Delta^*\Delta_*O_X$.  So morally $HH_*$ are global sections of the structure sheaf of the derived loop space. and $HH^*$ are the global sections of the volume forms of a derived loop space.
+
+\begin{thm}(Hochschild-Konstant-Rosenberg):  If $X$ is a smooth variety then:
+$$HH_i(X) = \bigoplus_{q-p = i}  H^p(X, \wedge^q \Omega_X^1)$$
+$$HH^i(X) = \bigoplus_{q+p = i}  H^p(X, \wedge^q T_X)$$
+\end{thm}
+The proof follows from the Claim:
+$$\Delta^*\Delta_*O_X = Sym(\Omega^1_X[1]).$$  Why? Because by the above definitions we have
+\begin{eqnarray*}
+HH^*(X) &= &\Ext^* (\Delta^* \Delta_* O_X, O_X) \\
+&=& \Ext^*(Sym(\Omega^1_X[1]), O_X) \\
+&=& \Ext^*(O_X,Sym(T_X[-1])) \\
+&= & \bigoplus_{p} H^{*-p}(X, \wedge^i T_X)
+\end{eqnarray*}
+For a complete proof, see Section 3 in Lecture 5 of Shinder's Mainz Lectures referenced at the beginning of these notes. 
+\end{document}
