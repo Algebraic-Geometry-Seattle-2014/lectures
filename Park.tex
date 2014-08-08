@@ -1,0 +1,234 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage[parfill]{parskip}    
+\usepackage{graphicx}
+\usepackage{xypic}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{mathrsfs}
+\usepackage{MnSymbol}
+\usepackage{enumerate}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
+\numberwithin{equation}{section}
+
+\setcounter{tocdepth}1
+\numberwithin{subsection}{section}
+\renewcommand\qedsymbol{{\ensuremath{\clubsuit}}}
+\renewcommand\bibname{References}
+\allowdisplaybreaks[1]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{enumeratea}
+{\begin{enumerate}[\upshape (a)]}
+{\end{enumerate}}
+
+\newenvironment{enumeratei}
+{\begin{enumerate}[\upshape (i)]}
+{\end{enumerate}}
+
+\newenvironment{enumerate1}
+{\begin{enumerate}[\upshape (1)]}
+{\end{enumerate}}
+
+\newtheorem*{namedtheorem}{\theoremname}
+\newcommand{\theoremname}{testing}
+\newenvironment{named}[1]{\renewcommand\theoremname{#1}
+\begin{namedtheorem}}
+{\end{namedtheorem}}
+
+\newtheorem*{maintheorem}{Theorem}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{thm}[subsection]{Theorem}
+\newtheorem{proposition}[subsection]{Proposition}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem{proposition-definition}[subsection]
+{Proposition-Definition}
+\newtheorem{corollary}[subsection]{Corollary}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+\newtheorem{question}[subsection]{Question}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{notation}{Notation}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+\newtheorem{note}[subsection]{Note}
+\newtheorem{problem}[subsection]{Problem}
+\newtheorem*{pf}{Proof}
+
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+
+
+\newcommand{\nc}{\newcommand}
+\nc{\rnc}{\renewcommand}
+\nc{\eps}{\epsilon}
+\nc{\C}{\mathbb C}
+\nc{\R}{\mathbb R}
+\nc{\Q}{\mathbb Q}
+\nc{\Z}{\mathbb Z}
+\nc{\N}{\mathbb N}
+\rnc{\O}{\mathcal O}
+\nc{\F}{\mathcal F}
+\nc{\D}{\mathcal D}
+\nc{\K}{\mathcal K}
+\nc{\Cp}{\mathcal C_8}
+\nc{\Qu}{\mathcal Q}
+
+\nc{\us}{\underset}
+\nc{\os}{\overset}
+\nc{\ul}{\underline}
+\nc{\ov}{\overline}
+\nc{\Ra}{\Rightarrow}
+\nc{\La}{\Leftarrow}
+\nc{\LRa}{\Leftrightarrow}
+\nc{\bs}{\backslash}
+
+\nc{\id}{\text{id}}
+\nc{\g}{\mathfrak g}
+\rnc{\L}{\mathcal L}
+\nc{\tr}{\text{tr}}
+\nc{\ad}{\text{ad}}
+\rnc{\P}{\mathbb P}
+\nc{\Bl}{\text{Bl}}
+\nc{\M}{\mathcal M}
+\nc{\Pic}{\text{Pic}}
+\nc{\Exc}{\text{Exc}}
+\nc{\Proj}{\mathscr P}
+\nc{\Isom}{\mathscr I som}
+\nc{\bu}{\bullet}
+\nc{\A}{\mathscr A}
+\nc{\Ad}{\mathbb A}
+
+\title{Brauer-Manin Obstructions}
+\author{Jennifer Park}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Hasse Principle}
+
+Example 1.1:  Does the variety defined by $x^2+y^2=3z^2$ in $\P^2_\Q$ have any $\Q$-points?  The answer is no, as can be seen by reducing the equation mod 9.  This implies that there are in fact no $\Q_3$-points.\\\\
+Example 1.2:  Does the variety defined by $x^2+y^2+z^2=0$ in $\P^2_\Q$ have any $\Q$-points?  The answer is no again, since there are in fact no $\R$-points.  Think of $\R$ as $\Q_{\infty}$.\\\\
+Now let $X$ be an arbitrary variety.  If $X(\Q_p)\neq \emptyset$ for all places $p$ implies that $X(\Q)\neq\emptyset$, we say that $X$ satisfies the Hasse Principle (HP).  Note that we always have 
+$$X(\Q)\subset \prod_{p\leq\infty} X(\Q_p).$$
+The following classes of varieties are known to satisfy HP:\\
+
+$\bu$ Smooth projective quadrics (Hasse-Minkowski).\\
+$\bu$ Severi-Brauer varieties (Ch\^{a}telet).\\
+$\bu$ Smooth projective cubics in $\P^n_\Q$ for $n\geq 9$ (Hooley).\\
+$\bu$ Smooth proper models of intersections of two quadrics in $\P^n_\Q$ for $n\geq 3$.\\
+
+\section{Brauer-Manin}
+
+Definition 2.1:  Let $F$ be a field.  The Brauer group of $F$ is given by the set
+$$Br(F) := \{\text{f.d. central simple algebras / }F\}/\sim$$
+where $A\sim B$ if $M_n(A)\simeq M_m(B)$ for some $n,m\in \N$.  Tensor product makes it into a group, with $[F]$ as the identity and inversion given by $A\mapsto A^{op}$.\\
+
+Definition 2.2:  Let $X$ be a geometrically irreducible scheme over $k$ a field of char. 0.  The Brauer group of $X$ is given by
+$$Br_{az}(X) := \{\text{Azumaya algebras on } X\}/\sim$$
+where $\A\sim \mathscr B$ if $\A\otimes \mathcal E\mathcal n\mathcal d(\mathcal E) \simeq \mathscr B \otimes \mathcal E\mathcal n \mathcal d(\mathcal F)$ for locally free sheaves $\mathcal E, \mathcal F$ on $X$ of finite positive rank.  There is also a cohomological definition
+$$Br_{coh}(X) := H^2_{\text{\'{e}t}}(X,\mathbb G_m)$$
+and the two notions agree when $X$ is smooth projective.\\
+
+Example 2.3:  Let $a,b\in \Q^\times$.  We define the quaternion algebra $(a,b)$ as
+$$\Q\{i,j\}/(i^2=a, j^2=b, ij=-ji)$$
+One can check that the Brauer class of $(a,b)$ lies in $Br(\Q)[2]$.  Similarly, let $(a,b)_p$ denote the algebra $(a,b)\otimes \Q_p$, whose Brauer class lies in $Br(\Q_p)[2]$.  
+
+Facts:\\
+$\bu$ $(ab,c)=(a,c)(b,c)$\\
+$\bu$ $(a,b)=(b,a)$\\
+$\bu$ $(a,1-a)=1$\\
+
+Now let $\A\in Br_{az}(X)$, and let $\Ad$ denote the rational adeles.  The following diagram commutes:
+$$\xymatrix{
+{} & X(\Q) \ar[d]_{\A}\ar[r] &X(\Ad) \ar[d]_{\A} & {}& {} \\
+0 \ar[r] & Br(\Q)\ar[r] & \bigoplus_{p\leq\infty} Br(\Q_p) \ar[r] & \Q/\Z \ar[r] & 0
+}$$
+Here, the vertical arrows take the fiber of the Azumaya algebra $\A$ over each point, and the right hand map is given by local class field theory
+$$\sum_p inv_p :  \bigoplus_{p\leq\infty} Br(\Q_p) \to  \Q/\Z.$$
+Global class field theory says that the bottom sequence is exact.  Now, set
+$$X(\Ad)^\A := \{(x_p)\in X(\Ad): \sum_p inv_p(\A(x_p))=0\}$$
+$$X(\Ad)^{Br} := \bigcap_{\A\in Br(X)} X(\Ad)^\A$$
+and observe that
+$$X(\Q)\subset X(\Ad)^{Br}\subset X(\Ad)^\A\subset X(\Ad)$$
+If $X(\Ad)^{Br}\neq\emptyset$ implies that $X(\Q)\neq\emptyset$, we say that Brauer-Manin (BM) is the {\it only} obstruction to the Hasse Principle.\\
+
+Example 2.4:  Let $X$ be the del Pezzo surface in $\P^4_\Q$ defined by 
+$$uv = x^2-5y^2$$
+$$(u+v)(u+2v)=x^2-5z^2.$$
+This does not satisfy the HP, but there is a Brauer-Manin obstruction.  To see this, first recall that $(a,b)=1$ if $a$ appears as a norm in $\Q(\sqrt{b})$.  In fact, $X(\Ad)^\A=\emptyset$ for 
+$$\A=\left(5,\frac{u}{u+v}\right) = \left(5,\frac{u}{u+2v}\right) = \left(5,\frac{v}{u+v}\right) =\left (5,\frac{v}{u+2v}\right)\in Br(X).$$
+$\bu$ $inv_{\infty} \A_\infty=0$, since 5 is a square in $\R$.\\
+$\bu$ Similarly, if $p$ is an odd prime with $(\frac{5}{p})=1$, $inv_p \A_p=0$.\\
+$\bu$ If $p$ is an odd prime with $(\frac{5}{p})=-1$, then $uv \equiv (u+v)(u+2v)$ mod 5, so one of the four expressions for $\A_p$ is trivial, so $inv_p\A_p=0$.\\
+$\bu$ If $p=2$, look at all possibilities mod 16 to find $inv_2 \A_2=0$.\\
+$\bu$ If $p=5$, we have $u\equiv v\equiv \pm x$ mod 5, so
+$$\frac{u}{u+v}\equiv 3\text{ mod 5}.$$
+Hence, $(5,3)_5=-1$ so $inv_5 \A_5=1/2$.\\
+
+Putting this all together, we find that
+$$\sum_p inv_p(\A_p) = 1/2$$
+so $X(\Ad)^\A=\emptyset$.  $\blacksquare$.\\
+
+For the following classes of varieties, BM is the only obstruction to the HP:\\
+
+$\bu$ Smooth proper models of cubic hypersurfaces with 2 or 3 singular points, over $\Q$.\\
+$\bu$ Singular cubic threefolds with isolated singularities.\\
+$\bu$ Ch\^{a}telet surfaces.\\
+
+Conjecture 2.5:  Curves and rationally conn. sm. proj. varieties are also in this list.
+
+\section{Insufficiency of BM Obstruction}
+Since BM is computable, but $\Q$-points are probably not (Hilbert's 10th Problem), the BM obstruction must be insufficient.  The first counterexample was found by Skorobogatov (1999).  Here, we sketch the idea of a simpler example discovered by Poonen (2008).\\
+
+Let $\mathscr V\to \P^1\times \P^1$ be a conic bundle, and let $\pi:\mathscr V\to \P^1$ denote the bundle map composed with the first projection.  The fibers of $\pi$ are Ch\^{a}telet surfaces, and the fiber over $\infty$ has no $\Q$-points, but it does have adelic points:
+$$\mathscr V_{\infty}(\Ad)\neq\emptyset.$$
+Let $C\to \P^1$ be a hyperelliptic curve of genus $\geq 2$, so it has finitely many $\Q$-points.  Now define $X$ to be the fiber product
+$$\xymatrix{
+X \ar[r]\ar[d]_\beta & \mathscr V \ar[d]_\pi\\
+C \ar[r]^{2:1} & \P^1
+}$$
+By construction, $X(\Q)=\emptyset$.  It turns out that $Br(X)\simeq Br(C)$, so then
+$$X(\Ad)^{Br} = \beta^{-1}(C(\Ad)^{Br})\supset \beta^{-1}(C(\Q)) = \mathscr V_\infty(\Ad)\times C(\Q)\neq \emptyset$$
+
+\section{\'{E}tale Brauer Obstruction}
+
+In this section, $G\to X$ will denote a finite \'{e}tale group scheme, and $f:Z\to X$ a $G$-torsor.  We have
+$$X(\Q) = \coprod_{\tau\in H^1(\Q,G)} f^\tau(Z^\tau(\Q)) \subset \bigcup_{\tau\in H^1(\Q,G)} f^\tau(Z^\tau(\Ad))$$
+
+Definition 4.1:  The \'{e}tale Brauer adelic points of $X$ are given by
+$$X(\Ad)^{\text{\'{e}t},Br} := \bigcap_{G\to X} \left(  \bigcup_{\tau\in H^1(\Q,G)} f^\tau(Z^\tau(\Ad)^{Br}) \right)$$
+It is clear that
+$$X(\Q)\subset X(\Ad)^{\text{\'{e}t},Br} \subset X(\Ad)^{Br} \subset X(\Ad)$$
+so we get a finer obstruction.\\
+
+Poonen (2008):  The \'{e}tale Brauer obstruction is still not sufficient.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,249 @@
+\documentclass[reqno]{amsart}
+\pagestyle{plain}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{graphics}
+\usepackage{latexsym}
+%\addtolength{\textwidth}{25mm}
+%\addtolength{\textheight}{20mm}
+%\addtolength{\oddsidemargin}{-.5\oddsidemargin}
+%\addtolength{\evensidemargin}{-.5\evensidemargin}
+%\addtolength{\topmargin}{-.5\topmargin}
+%\addtolength{\headsep}{-.55\headsep}
+%\addtolength{\footskip}{-.5\footskip}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theo}[theorem]{Theorem}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{lem}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notat}[theorem]{Notation}
+\newtheorem{conv}[theorem]{Convention}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{ques}[theorem]{Question}
+\newtheorem{rmk}[theorem]{Remark}
+
+\newtheorem{ex}{Example}
+\newtheorem{corex}[ex]{Corollary and Example}
+
+\theoremstyle{remark}
+\newtheorem{Remark}{Remark}[section]
+
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\AAA}{\mathbb{A}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\PPP}{\PP_{\CC}}
+\newcommand{\SP}{\text{Spec }}
+\newcommand{\HB}[3]{\text{Hilb}^{#1}_{{#2}/{#3}}}
+\newcommand{\GR}[3]{\text{G}_{#1}(#2,#3)}
+\newcommand{\mgn}[2]{\text{M}_{#1,#2}}
+\newcommand{\Mgn}[2]{\mathcal{M}_{#1,#2}}
+\newcommand{\mgnb}[2]{\overline{\text{M}}_{#1,#2}}
+\newcommand{\Mgnb}[2]{\overline{\mathcal{M}}_{#1,#2}}
+\newcommand{\kgn}[4]{\text{M}_{#1,#2}(#3,#4)}
+\newcommand{\Kgn}[4]{\mathcal{M}_{#1,#2}(#3,#4)}
+\newcommand{\kgnb}[4]{\overline{\text{M}}_{#1,#2}(#3,#4)}
+\newcommand{\Kgnb}[4]{\overline{\mathcal{M}}_{#1,#2}(#3,#4)}
+\newcommand{\kgnbo}[4]{\overline{\text{M}}_{#1,#2}(#3,#4)^o}
+\newcommand{\Kgnbo}[4]{\overline{\mathcal{M}}_{#1,#2}(#3,#4)^o}
+\newcommand{\Kbm}[2]{\overline{\mathcal{M}}_{#1}(#2)}
+\newcommand{\kbm}[2]{\overline{M}_{#1}(#2)}
+\newcommand{\kbmo}[2]{{M}_{#1}(#2)}
+\newcommand{\Kbmo}[2]{{\mathcal{M}}_{#1}(#2)}
+\newcommand{\kbmoo}[2]{{M}_{#1}(#2)^o}
+\newcommand{\Kbmoo}[2]{{\mathcal{M}}_{#1}(#2)^o}
+\newcommand{\Na}[2]{{\mathcal{N}}(#1,#2)}
+\newcommand{\nNa}[2]{{\mathcal{N}}(#1,#2)_s}
+
+
+\newcommand{\lt}{\left}
+\newcommand{\rt}{\right}
+\newcommand{\bc}[2]{\binom{#1}{#2}}
+
+\newcommand{\mc}{\mathcal}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cG}{{\mathcal G}}
+\newcommand{\cX}{{\mathcal X}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\lci}{\mathcal {LCI}}
+\newcommand{\fe}{\mathcal {FE}}
+
+\newcommand{\g}{{\frak g}}
+\newcommand{\gs}{{\frak g}^{\ast}}
+\newcommand{\HH}{{\cal H}}
+\newcommand{\OO}{\mathcal O}
+\newcommand{\Ci}{C^{\infty}}
+\newcommand{\B}{{\cal B}}
+\newcommand{\Cs}{C^{\ast}}
+\newcommand{\Ws}{W^{\ast}}
+\newcommand{\Metc}{M^{d,w}}
+\newcommand{\Hetc}{H^{d,w}}
+\newcommand{\Betc}{(B,\Sigma,b_0)}
+
+\def\mapright#1{-{#1}\to}
+\def\Ker{{\rm Ker}\,}
+\def\dd{{\rm d}}
+\def\Proj{{\rm Proj}\,}
+\def\Spec{{\rm Spec}\,}
+\def\Hom{{\rm Hom}\,}
+\def\mC{{\mathbb C}}
+\def\mP{{\mathbb P}}
+\def\PP{{\mathbb P}}
+\def\cO{{\mathcal O}}
+\def\cZ{{\mathcal Z}}
+\def\cM{{\mathcal M}}
+\def\cC{{\mathcal C}}
+
+\begin{document}
+
+\title{Notes on Moduli spaces in Derived categories} 
+
+\author[Bertram]{Aaron Bertram}\footnote{Lecture Notes typed by C\'esar Lozano Huerta at the conference New Connections for recent PhDs. Seattle, WA.}
+\address{Department of Mathematics \\
+  University of Utah \\ Salt Lake City, Utah}
+\email{bertram@math.utah.edu} 
+\date{\today}
+
+
+
+\maketitle
+
+
+\section*{Motivation} 
+
+
+\begin{problem}
+Find a moduli space for the elements of $Coh(X)$, where $X$ is a smooth, projective algebraic variety over the field of complex numbers.
+\end{problem}
+
+
+\subsection*{History} 
+
+In the begining, we have discrete invariants: $Ch:K_0(X)\rightarrow V=H^{p,p}(X)\cap H^*(X,\mathbb{Q})$
+
+\begin{itemize}
+\item[(a)] Let $X=C$ be a curve. Then, $Ch(E)=(r,d)\in H^0(C)\oplus H^2(C)$.
+
+\item[(b)] Let $X=S$ be a surface. Then, $Ch(E)=(r,c_1,ch_2)\in H^0(S)\oplus NS(S)_{\mathbb{Q}}\oplus H^4(S)=\tilde {NS}(S)$.
+\end{itemize}
+
+If we fix a Chern character $$c:=Ch(\mathcal{F}),$$ then the moduli space of coherent sheaves with fixed Chern character $\mathcal{M}_X(c)$, is a stack.
+Observe that $\mathbb{C}\cdot id\subset End(\mathcal{F})$ multiples of the identity are contained in the automorphisms of $\mathcal{F}$. 
+
+During a conference celebrating Hartshorne, it came as a surprise to me that they were analyzing the following,
+\begin{definition}
+Let $\mathcal{F}$ a coherent sheave. We say that $\mathcal{F}$ is simple if $End{\mathcal{F}}=\mathbb{C}\cdot id$.
+\end{definition}
+
+Let us list some examples of the behavior of the moduli space $\mathcal{M}_X^{\tiny{simple}}(c)$.
+\begin{itemize}
+\item Let $X=\mathbb{P}^1$. Then, $\mathcal{O}(d)$, $\mathbb{C}_x$ are simple. Moreover, $\mathcal{M}_X^{\tiny{simple}}(c)=\mathbb{P}^1$.
+
+\item Let $E$ be an elliptic curve. Then, $\mathbb{C}_x$, line bundles are simple. In addition to these, there are simple vector bundles $E$ of coprime $(r,d)$. In this case $\mathcal{M}_X^{\tiny{simple}}(c)=E$.
+\end{itemize}
+
+In higher genus (and higher dimensions) the moduli space of simple sheaves are not separated (in general). Here is a construction which explains this.
+
+Let $E_{\Delta}\rightarrow X$ be a family of vector bundles over a disk $\Delta$. The central fiber $E_0$ fits into the following exact sequence,
+$$0\longrightarrow K_0\longrightarrow E_0\longrightarrow Q_0\longrightarrow 0 $$
+Now we can construct another vector bundle via the following,
+$$0\longrightarrow \tilde E_{\Delta} \longrightarrow E_{\Delta}\longrightarrow j_*Q_0\longrightarrow 0, $$ where $j:E_0\rightarrow E_{\Delta}$ is the inclusion of the central fiber.
+Hence, we have another vector bundle $\tilde E_0$ that fits as a central fiber of $E_{\Delta}$,
+$$0\longrightarrow Q_0\longrightarrow \tilde E_0\longrightarrow K_0\longrightarrow 0. $$
+We need a tool in order to rule out vector bundles, such as $\tilde E_0$, and make the moduli space separated. 
+
+\begin{definition}
+A vector bundle $E$ on a curve $C$ is stable if its slope $\mu(E):=\frac{\mathrm{deg}E}{rk E}$ satisfies that $$\mu(F)<\mu(E) $$ for all $F\subset E$.
+\end{definition}
+
+Observe that $\mu(F)<\mu(E) $ if and only if $\mu(F)<\mu(E/F) $.
+
+\begin{theo}($\sim$60's)
+The moduli spaces of vector bundles, $\mathcal{M}_C^{\tiny{stable}}(r,d)$, of a fixed rank $r$ and fixed degree $d$ on a curve $C$, are quasi-projective.
+\end{theo}
+
+\textbf{Exercise:} If the vector bundle $E$ is stable, then $E$ is simple.
+
+\medskip
+\textbf{Exercise:} If $E$ and $F$ are stable and $\mu(E)<\mu(F)$, then $Hom(F,E)=0$.
+
+We say that $E$ is semi-stable if there is a filtration (of slope $\mu$) $$0=E_0\subset E_1\subset \ldots \subset E_n=E,$$ such that $E_{i+1}/E_i$ are stable of the same slope.
+
+We have that $$\mathcal{M}_C^{\tiny{stable}}(r,d)\subset \mathcal{M}_C^{\tiny{ss}}(r,d)$$. Furthermore, $E\sim E'$ if and only if $\oplus E_{i+1}/E_i\cong \oplus E'_{i+1}/E'_i$.
+
+\section*{Abstract definition of stability}
+Let $\mathcal{A}$ be an abelian category. For example $Coh(X)$.
+A stability condition on $\mathcal{A}$ is a pair of functions
+$$d:K(\mathcal{A})\rightarrow \mathbb{R}, \qquad r:K(\mathcal{A})\rightarrow \mathbb{R}$$
+such that $r(\mathcal{A})\ge 0$ for all $\mathcal{A}\in \mathrm{Ob}(\mathcal{A})$, and $r(\mathcal{A})=0$ if and only if $d> 0$.
+
+\begin{definition}(Rudukov) $\mathcal{A}$ is prestable if  
+\begin{itemize}
+\item [(1)] $\mu(B)<\mu(A) $ for all $A\subset B$, and the function$$Z:=-d+ir$$ has  the range 
+
+$$\mathrm{P I C T U R E}$$
+
+\item[(2)] for all $\mathcal{A}\in \mathrm{Ob}(\mathcal{A})$, there is a finite filtration (Harder-Narashiman filtration) such that $\mu(A_{i+1}/A_i)<\mu(A_1/A_{i-1})$.
+\end{itemize}
+\end{definition}
+ 
+
+Observe that there is no stability conditions on $Coh(X)$, where dim$X>1$ (See Huybrechts' notes stability conditions).
+
+\begin{definition}
+Let $\mathcal{D}$ be a triangulated category, (eg. $\mathcal{D}^b(Coh(X))$). A stability condition on $\mathcal{D}$ is 
+\begin{itemize}
+\item a $t$-structure on $\mathcal{D}$,
+
+\item a stabilitty condition on the heart of the $t$-structure.
+\end{itemize}
+\end{definition}
+
+\begin{theo}(Bridgeland) Let $\mathcal{D}=\mathcal{D}^b(Coh(X))$. The map $$\mbox{stability conditions}=\mathrm{Stab}(X)\overset{(\sigma,Z)\mapsto Z}{\longrightarrow}Hom(\oplus H^{p,p}(X),\mathbb{C})$$ is \'etale on a subspace of $V=Hom(\oplus H^{p,p}(X),\mathbb{C})$.
+\end{theo}
+\subsubsection*{Example}
+Let $E$ be an elliptic curve. We can identify the moduli of elliptic curves with $$SL_2(\mathbb{Z})\backslash \mathrm{Stab}/\mathbb{C}^* $$
+where the first quotient by $SL_2(\mathbb{Z})$ comes from Fourier-Mukai.
+
+\bigskip
+
+\subsubsection*{Motivating conjecture:}
+Let $X$ be a smooth, projective Calabi-Yau threefold. If $Y_t\rightarrow T$  is the mirror, then $$\phi:T\longrightarrow Aut(\mathcal{D}^b(X))\backslash \mathrm{Stab}/\mathbb{C}^*, $$ where the map $\phi$ is defined in physics.
+
+
+\subsubsection*{Example}
+Let $S$ be a surface and $H$ an ample line bundle on it.
+\begin{theo}(Bridgeland, Arcara-Bertram)
+The function $$Z=-d+ir$$ supports a stability condition on $S$ if $\alpha_d=\alpha_0+\alpha_1+\alpha_2\in \tilde{NS}(S)$ satisfies $\alpha_1^2>2\alpha_0\alpha_2$, and $\alpha_0>0$.
+\end{theo}
+
+Suppose $d(E)=(Ch(E),\alpha_d)$, $r(E)=(Ch(E),\alpha_r)$ ($\alpha_r=\alpha_dH$), then $Z$ has a tilt $\sigma$ of $Coh(S)$.
+
+\medskip
+Consider $\mathcal{M}=\mathcal{M}^{\tiny{stable}}_S(c,(\sigma,Z))$, and as we vary $(\sigma,Z)$ we get birational models of $\mathcal{M}$.
+\subsubsection*{Example} Let $S=\mathbb{P}^2$. We will interpret $\mathbf{Hilb}^n(\mathbb{P}^2)$ the Hilbert scheme of points on $\mathbb{P}^2$ as the moduli id ideal sheaves, $i.e.$ $(1,0,-n)$.
+\begin{theo}(\cite{ABCH}) The birational models of $\mathbf{Hilb}^n(\mathbb{P}^2)$ that arise from divisors in the Mori chambers of the effective cone $\mathrm{Eff}(\mathbf{Hilb})$ correspond to moduli spaces of Bridgeland stable objects.
+\end{theo}
+
+
+\bigskip
+\begin{thebibliography}{C}
+
+\bibitem[ABCH]{ABCH}D. Arcara, A. Bertram, I. Coskun, J. Huizenga \emph{The minimal model program for the Hilbert scheme of points on the plane and Bridgeland stability}, Advances in Mathematics, Vol. 235, 2013.
+
+\end{thebibliography}
+
+\end{document}
