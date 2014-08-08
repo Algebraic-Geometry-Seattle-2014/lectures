@@ -26,5 +26,8 @@ The speakers were
 - Angela Gibney
   * Scribe: Eric Riedl
 - Aaron Bertram
+  * Scribe: Cesar Huerta
 - Nathan Pflueger
+  * Notes provided by Pflueger
 - Yiwei She
+  * Scribe: Gabriel Bujokas
