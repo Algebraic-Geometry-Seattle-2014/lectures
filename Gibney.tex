@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,amscd,amsthm,amsmath,color}
+%\usepackage[margin=1.0in]{geometry}
+\usepackage{fullpage}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\aA}{\mathcal{A}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\RR}{\mathcal{R}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\sing}{\textsf{sing}}
+\newcommand{\smooth}{\textsf{smooth}}
+\newcommand{\shrp}{\textsf{sharp}}
+\newcommand{\Hom}{\textsf{Hom}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\ev}{\operatorname{ev}}
+\newcommand{\pr}{\operatorname{pr}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\codim}{\operatorname{codim}}
+%\newcommand{\dim}{\operatorname{dim}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{answer}[theorem]{Answer}
+
+\begin{document}
+Angela Gibney's talk at Seattle 2014 Workshop
+
+\section{The Multiplicative Eigenvalue Problem and Nef cone for $\overline{\MM_{0,n}}$}
+
+\begin{itemize}
+\item BGM = Belkale and Mukopadyay
+\item BGK = B G Kazanova
+\item GG = Giansivacusa G
+\end{itemize}
+
+\subsection{Intro}
+Today I will discuss two related problems: one about a polyhedron that comes from representation theory (the Eigenpolyhedron) and the second a (hopefully/potentially/maybe) polyhedral cone that comes from algebraic geometry.
+
+I wanted to sensationalize things a bit to draw in potential future collaborators from this pool of young talent, so  I'm going to talk a bit about very new developments along with my own work.
+
+But first, on the algebraic geometry side, we have the Nef cone of a projective variety.
+\[ \text{Nef } X = \{ \text{nef divisors on } X \} \]
+A divisor $D$ on $X$ is nef if $D \cdot C \geq 0$ for all curves $C$ on $X$.
+
+\begin{question}
+Why do we care about Nef$(X)$?
+\end{question}
+\textbf{Answer:} If $f: X \to Y$ is a morphism, with $Y$ projective, then $f$ comes with a nef divisor and by studying that nef divisor, we learn about $f$.  If $A$ is ample on $Y$ (we have such $A$ since $Y$ is projective), then $f^{\ast}A = D$ is nef.  To see this, note that $c \cdot f^{\ast}A = f_{\ast}(C \cdot f^{\ast} D) = C \cdot A$.  This last is $0$ if $C$ is contracted by $f$, and positive otherwise.
+
+\begin{question}
+How feasible is this approach to studying maps from $X$ to other projective varieties?
+\end{question}
+\textbf{Answer:} It depends on how complicated Nef$(X)$ is.  
+\begin{enumerate}
+\item If Nef$(X)$ is polyhedral, then at least there are only finitely many nef divisors to ``find'' to really understand all the other ones.
+
+\item If $D \in $ Nef$(X)$ always comes from a map $f$ with $mD = f^{\ast}A$ for some $f$ and some $A$, then the cone really does reflect morphisms.
+\end{enumerate}
+
+In general, neither of these properties has to hold.  If $X$ is a ``Mori Dream Space'' then both of the above properties hold.
+
+For today, we will have $X = \overline{\MM_{0,n}}$, which is a smooth projective variety.  For $n \leq 6$, $X$ is a Mori Dream Space.  Very recently (on July 23, 2014) Gonz\'{a}lez and Karu showed that $X$ is not a Mori Dream Space (MDS) for $n \geq 13$, based on a method that Castravet and Tevelev used to prove the same result for $n \geq 134$.  However, even if $X$ is not a Mori Dream Space, properties 1 and 2 might hold.
+
+If we consider the $S_n$-invariant quotient of $X$, then Nef$(X/S_n)$ is polyhedral for $n \leq 24$ (G).  Fedorchuk proved recently (on July 29, 2014) a semiampleness criterion for nef divisors on $X/S_n$ which shows all extremal rays of the $S_n$-inv cone are semiample for $n \leq 15$.  For $n = 16$ and $17$, he shows all but one of the extremal rays are semiample.  However, the $S_n$-quotient is easier to understand.  Nef$(X)$ has 3190 extremal rays for $n=6$!
+
+\begin{question}
+Do we know many nef and semi-ample divisors?
+\end{question}
+\textbf{Answer:} Yes, and they come from RT conformal blocks divisors.  They are given by
+\[ c_1 \mathbb{V}(\mathfrak{g},\lambda,\ell) = \mathbb{D}(\mathfrak{g},\lambda,\ell) .\]
+$\mathbb{V}(\mathfrak{g},\lambda,\ell)$ is a vector bundle on $X$
+\begin{itemize}
+\item $\ell \in \ZZ$
+\item $\mathfrak{g}$ simple Lie algebra
+\item $\lambda = (\lambda_1, \cdots, \lambda_n)$ a vector of dominant integral weights for $\mathfrak{g}$ at level $\ell$.
+\end{itemize}
+For example, if $\mathfrak{g} = \mathfrak{sl}_{r+1}$, $\lambda_i = (\ell \geq \lambda_i^{(1)} \geq \cdots \geq \lambda_i^{(r)} \geq \lambda_i^{(r+1)} = 0)$.
+
+The bundles are quotients of the constant bundle of coinvariants
+\[ \mathbb{A}(\mathfrak{g},\lambda)|_{x = (C,p_1,\cdots,p_n)} = (V_{\lambda_1} \otimes \cdots \otimes V_{\lambda_n})_{\mathfrak{g}} \twoheadrightarrow \mathbb{V}(\mathfrak{g},\lambda,\ell)|_{x} ,\]
+where $\mathbb{V}(\mathfrak{g},\lambda,\ell)|_{x}$ is the ``vector space of conformal blocks.''  It's a vector space of dimension $R = $ rank of $\mathbb{V}$.  They define maps
+\[ X \to \text{Grass}^{\text{quot}}(A,R) \hookrightarrow \PP^{\binom{d}{R}-1} \]
+given by
+\[ x \mapsto A \twoheadrightarrow \mathbb{V}|_x .\]
+The CB divisor $c_1 \VV(\mathfrak{g},\lambda,\ell) = \DD(\mathfrak{g}, \lambda, \ell)$ gives rise to this morphism.
+
+What are the images?  Are they birational?  Do they have modular interpretations?  etc., etc.  These divisors are nef.  We can study them by their intersection properties:
+\[ \DD(\mathfrak{g},\lambda,\ell) \cdot C = \sum c_1 \VV(\mathfrak{g}, \mu, \ell) \Pi_{j=1}^4 \text{Rks} \VV(\mathfrak{g},\lambda(N_i)\cup \mu_i^{\ast}, \ell) \]
+where $\mu = (\mu_1,\cdots, \mu_4) \in P_{\ell}(\mathfrak{g})^4$ is the restriction data, $\lambda(N_i)\cup \mu_i^{\ast} = \{ \lambda_j | \: j \in N_i \} \cup \mu_i^{\ast}$, $F_{N_1 N_2 N_3 N_4} = C$ is a member of a family of curves that spans the $1$-cycles.
+
+\textbf{Note:} There are lots of these divisors so we may
+\begin{itemize}
+\item optimistically hope that every nef divisor is on a ray spanned by a CB divisor so every nef divisor is semiample
+\item but while optimistic, we can't help but be pessimistic because even if that fantastic thing were to be true, there may be too many CB divisors for polyhedrality to hold.
+\end{itemize}
+
+\textbf{What we have leanred about these things:}
+If  $\text{Rk} \VV(\mathfrak{g},\lambda,\ell) = 1$ then
+\begin{itemize}
+\item $\text{Rk} \VV(\mathfrak{g},k\lambda,k\ell) = 1 \forall k \geq 1 $ and
+\item $\DD(\mathfrak{g},k\lambda,k\ell) = k \DD(\mathfrak{g},\lambda,\ell) \forall k \geq 1$
+so there is lots of overlap in the ``rank 1 divisors.''
+\end{itemize}
+
+For example $\{\DD(\mathfrak{sl}_n,(w_i)^n,1) | \: 2 \leq i \leq \lfloor \frac{n}{2} \rfloor \}$ are extremal rays of the nef cone, and $\DD(\mathfrak{sl}_n,kw_i^n,k) = k \DD(\mathfrak{sl}_n,w_i^n,1)$ (Arap, G, Swinarski, Srankewon).
+
+\subsection{Eigenpolyhedra $ \Gamma(k,n)$}
+Let $K \subset G$ be the maximal compact subgroup of any simple, simply connected, compact, Lie group $G$.  For example, $K$ could be $SU_{r+1} \subset SL_{r+1}$.  $A \in SU_{r+1}$ can be conjugated
+\[ \overline{A} = \left[ \begin{array}{cccc}
+e^{2\pi i a^1} &  & &  \\
+  & e^{2\pi i a^2} & & \\
+  &  & \cdots & \\
+  & & & e^{2\pi i a^{r+1}} \\
+\end{array} \right] \]
+Let $\Lambda(K) = \{ x = (a^1,\cdots,a^{r+1}) | \sum_{i=1}^{r+1} a^i = 0, a^1 \geq a^2 \geq \cdots \geq a^{r+1} \geq a^1-1 \} \leftrightarrow$ conjugacy classes of $K$.  Write $A \sim x$ if 
+\[ \overline{A} = \left[ \begin{array}{cccc}
+e^{2\pi i a^1} &  & &  \\
+  & e^{2\pi i a^2} & & \\
+  &  & \cdots & \\
+  & & & e^{2\pi i a^{r+1}} \\
+\end{array} \right] \]
+Then $\Gamma(k,n) = \{ (x_1,\cdots,x_n) \in \Delta(K)^n | \: \exists A_1, \cdots, A_n \in K \text{ with } A_i \sim x_i \forall i, A_1 \cdots A_n = I_{r+1} \}$.
+
+\textbf{Fact:}(Meinrenken/Woodward) $\Gamma(k,n)$ is a polyhedron so it has finitely many vertices.
+
+\begin{question}
+What are the vertices of $\Gamma(k,n)$?
+\end{question}
+
+\textbf{Two examples of vertices:} 
+\begin{itemize}
+\item Let $\overrightarrow{x} = (x,\cdots,x)$, $x = (\frac{n-2}{n}, \frac{n-2}{n}, \frac{-2}{n}, \cdots, \frac{-2}{n}) $.
+\item For a nontrivial vertex of $\Gamma(\mathfrak{sl}_{r+1},6)$, let $x_1 = (\frac{r}{r+1}, \frac{-1}{r+1},\cdots, \frac{-1}{r+1})$, $x_2 = (\frac{1}{r+1},\cdots,\frac{1}{r+1}, \frac{-r}{r+1})$, $x_3=x_4 = (\frac{r}{2(r+1)},\frac{-1}{2(r+1)}, \cdots)$, $x_5 = x_6 = (\frac{1}{2(r+1)},\cdots,\frac{1}{2(r+1)}, \frac{-r}{2(r+1)})$.
+\end{itemize}
+
+We can take elements of Nef$(X)$ and produce elements of $\Gamma(K,n)$.   Given $\DD(\mathfrak{g},\lambda,\ell)$, we can find $G$ corresponding to $\mathfrak{g}$ and $K \subset G$, then can take $a_i^j = \frac{k\lambda_i^j}{k\ell}-\frac{|k\lambda_i|}{k\ell(r+1)} \forall k$.  BGK: $\lambda_i \leftrightarrow (a_i^1,\cdots,a_i^{r+1}) \in \Delta(K)$, $\lambda \leftrightarrow (x_1,\cdots,x_n) \in \Gamma(K,n)$.
+
+If $\DD(\mathfrak{g},\lambda,\ell)$ spans an extremal ray of nef cone, then this image point is a vertex in $\Gamma(K,n)$.
+
+\begin{conjecture}
+If rk$\VV(\mathfrak{sl}_{r+1},k \lambda,k \ell) = \binom{R+k-1}{R-1}$ and $\VV_{\ell}$ has ``rank one restriction behavior'' then we think that $\DD_{k\ell} = \binom{R+k-1}{R} \DD_{\ell}$.
+\end{conjecture}
+
+\end{document}

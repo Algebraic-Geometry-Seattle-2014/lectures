@@ -1,0 +1,344 @@
+\documentclass{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{eulervm}
+\usepackage{tgpagella}
+\usepackage[all,arc]{xy}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{xspace}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{fixmath}
+\usepackage{paralist}
+\usepackage{ellipsis}
+\usepackage{mathtools}
+\usepackage{graphicx,subfigure,epic,eepic}
+\usepackage{array}
+\usepackage{tikz-cd}
+
+\usepackage{fixltx2e}
+\usepackage[expansion=false,final]{microtype}
+
+\newtheorem*{thm}{Theorem}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{defn}{Definition}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{ex}{Example}
+\newtheorem*{rem}{Remark}
+\newtheorem*{warn}{Warning}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\CC}{\textbf{C}}
+\newcommand{\PP}{\textbf{P}}
+\newcommand{\Oh}{\mathcal{O}}
+\renewcommand{\H}{\mathcal{H}}
+
+\DeclareMathOperator{\Bl}{Bl}
+\DeclareMathOperator{\Coh}{Coh}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\pt}{pt}
+\DeclareMathOperator{\Spec}{Spec}
+
+
+
+\title{Semiorthogonal Decomposition}
+\author{John Calabrese, Notes by Brian Hwang}
+\date{August 7, 2014}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+The category of coherent sheaves is not the ideal invariant for complex varieties, because it is usually too strong. Indeed, we have the following theorem.
+
+\begin{thm}
+(Gabriel) If $\Coh(X) \simeq \Coh(Y)$, then $X \simeq Y$.
+\end{thm}
+
+Instead, given a variety $X$ over $\CC$, one might want to consider the derived category of coherent sheaves
+\[
+D(X) := D^b(\Coh(X)).
+\]
+This is slightly more flexible. A theorem of Bondal--Orlov says that the same conclusion as above holds, provided your variety is Fano or anti-Fano, but not all cases are like this.
+
+If $X$ is smooth and projective variety over $\CC$, the category $D(X)$ has the following properties:
+\begin{itemize}
+  \item{it is additive}
+  \item{has a shift operator $[1]$}
+  \item{is equipped with the natural exact triangles}
+  \item{have finite-dimensional $\oplus_i \Ext^i(E,F) = \oplus_i \Hom(E, F[i])$}
+  \item{(``Serre duality") $\Hom(E,F) = \Hom(F, E \otimes \omega_X[\dim X])^*$, which inspires the definition of the \textit{Serre functor}
+  \[
+  S_X(E) := E \otimes \omega_X[\dim X]
+  \]}
+\end{itemize}
+
+\begin{rem}
+If we have a decomposition $X = Y \amalg Z$, we have
+\[
+i_* i^* E \to E \to j_* j^* E.
+\]
+\end{rem}
+
+\begin{defn}
+We say that $\A, \B \subset D(X)$ form an \textbf{orthogonal decomposition} if
+\begin{itemize}  
+  \item{$\Hom(\B, \A) = 0 = \Hom(\A, \B)$}
+  \item{for all $E \in D(X)$, there exists a unique exact triangle
+  \[
+  B \to E \to A
+  \]
+  for all $A \in \A$ and $B \in \B$.}
+\end{itemize}
+\end{defn}
+
+The definition has the following immediate consequence.
+
+\begin{prop}
+A variety $X$ is disconnected if and only if $D(X)$ admits an orthogonal decomposition.
+\end{prop}
+
+However, this does not allow for any intermediate between connected and disconnected, so we relax some hypotheses and also consider the following definition.
+
+\begin{defn}
+We say that $\A, \B \subset D(X)$ form an \textbf{semiorthogonal decomposition} if
+\begin{itemize}
+  \item{$\Hom(\B, \A) = 0$}
+  \item{for all $E \in D(X)$, there exists a unique exact triangle
+  \[
+  B \to E \to A
+  \]
+  for all $A \in \A$ and $B \in \B$.}
+\end{itemize}
+We write this as $D(X) = \left<\A, \B\right>$.
+\end{defn}
+
+In general, we have
+\[
+D(X) = \left<\A_1, \dots, \A_k\right>.
+\]
+for some $\A_i \subset D(X)$.
+
+Given an $E \in D(X)$, we define a map
+\begin{align*}
+\phi_E: D(\text{Vect}) = D(\pt) & \to D(X) \\
+ V & \mapsto V \otimes_\CC E.
+\end{align*}
+
+\begin{defn}
+We say that $E$ is a \textbf{exceptional} if $\phi_E$ is fully faithful.
+\end{defn}
+
+Generally, it's hard to find exceptional objects. However, we do have the following fundamental result.
+
+\begin{thm}(Beilinson)
+\[
+D(\PP^n) = \left<\Oh, \Oh(1), \ldots, \Oh(n) \right>
+\]
+where $\Oh(k) = \phi_{\Oh(k)}(D(\pt))$.
+\end{thm}
+
+
+\begin{warn}
+The standard notation is a little misleading.
+We write
+\[
+D(\PP^1) = \left<D(\pt), D(\pt)\right>,
+\]
+but also
+\[
+D(\pt \amalg \pt) = \left< D(\pt), D(\pt) \right>.
+\]
+The difference is that the former is a semiorthogonal decomposition, while the latter is actually an orthogonal decomposition.
+\end{warn}
+
+\begin{rem}
+If $X$ is Calabi--Yau, then $D(X)$ has no semiorthogonal decomposition.
+\end{rem}
+
+We also have a relative version of Beilinson's theorem.
+
+\begin{thm}(Orlov)
+If $E$ is a rank $n+1$ vector bundle on a variety$X$ and
+\[
+p: \PP_X(E) \to X,
+\]
+then
+\[
+D(\PP(E)) = \left< p^* D(X), p^*D(X) \otimes \Oh_P(1), \ldots, p^*D(X) \otimes \Oh_P(n)\right>.
+\]
+\end{thm}
+
+We have a similar decomposition for blowups.
+
+\begin{thm}(Orlov)
+If $Y \subset X$ are smooth varieties and
+\[
+\xymatrix{
+E \ar[r]^\iota \ar[d]^p & \Bl_Y X \ar[d]^\pi \\
+Y \ar[r] & X
+}
+\]
+then
+\[
+D(\Bl_Y X) = \left<\pi^* D(X), \iota_*p^*D(Y) \otimes \Oh_P(1), \ldots, \iota_* p^*D(Y) \otimes \Oh_P(c-2)\right>
+\]
+where $c = \dim_X Y$.
+\end{thm}
+
+This decomposition is sometimes useful for computing other invariants. For instance, if $D(X) = \left<\A_1, \ldots, \A_r\right>$, then $K_0(X) = \oplus_i K_0(\A_i)$.
+
+As a final note, it is generally difficult to tell when a decomposition is full. One reason is because there are examples of ``phantom" or ``quasi-phantom" phenomena for some of these categories; they are named because they ``vanish" if we take some coarser invariants like Hochschild homology, higher K-theory, etc.
+
+
+\section{Homological Projective Duality (Kuznetsov)}
+
+The idea behind homological projective duality begins with the following question: if I understand what happens for hypersurface in a projective variety and how it moves around, what can I say about the whole derived category?
+
+\begin{ex}
+Consider $X = \{s = 0\} \subset \PP^n$ where $s$ is of degree $d \leq n$. Then
+\[
+D(X) = \left<\A_X, \Oh_X, \ldots, \Oh_X(n-d)\right>.
+\]
+
+The only interesting invariant in this situation is $\A_X$, so for the remainder of the talk, we will use a convenient nonstandard notation:
+\[
+D_{int}(X) = \A_X.
+\]
+\end{ex}
+
+A natural question to ask is: What is the Serre functor $S_\A$? Nobody knows, but we do know what a \textit{power} of the Serre functor should be.
+
+\begin{lem}
+\[
+S_\A^{d/\gcd(n+1,d)} = \left[ \frac{(d-2)(n+1)}{\gcd(n+1, d)}\right]
+\]
+\end{lem}
+
+\begin{ex}
+For cubic 4-folds, we have $n = 5$ and $d = 3$, so
+\[
+S_\A = [2].
+\]
+\end{ex}
+
+A question one may ask in this specific situation is: when is $\A$ the derived category of a K3 surface? It is conjectured that this holds precisely for rational cubic 4-folds, guided by a geometric heuristic. However, remember that we don't have any written example of an irrational cubic 4-fold. There is also a conditional proof of this conjecture, but it assumes some strong results.
+
+
+\begin{rem}
+Right now you might ask, I don't see any duals anywhere, where exactly is the ``duality" in homological projective duality?
+
+We will try and make the reason clear in what follows. The general idea is that you get some categories by varying a hypersurface is a linear family, and by considering these categories together, the base locus has ``interesting part" $\A$, so you can sort of think of $\A$ as the ``dual." 
+\end{rem}
+
+Consider $\PP^n \to \PP(V)$ where $V = H^0(\PP^n, \Oh(d))^*$. Setting
+\[
+\H = \{(p,s) \mid s(p) = 0\},
+\]
+we have
+\[
+\xymatrix{
+\H_s \ar[r] \ar[d] & \H \subset \PP^n \times \PP(V^*) \ar[d] \\
+\bullet \ar[r]& \PP(V^*)
+}
+\]
+Then
+\begin{align*}
+D(\H) &= \left<\A, D(\PP(V^*) \boxtimes \Oh(d), \ldots, D(\PP(V^*)) \boxtimes \Oh(n) \right> \\
+D(\H_s) &= \left<\A_s, \ldots \right>
+\end{align*}
+
+Given an $L \subset V^*$, we have
+\[
+\xymatrix{
+\H_L \ar[r] \ar[d] &  \H \ar[d] \\
+\PP(L) \ar[r] & \PP(V^*)
+}
+\]
+with
+\[
+D_{int}(\H_L) = \A_L.
+\]
+
+Given $0 \to L^\perp \to V \to L^*$, we have
+\[
+\xymatrix{
+X_L \ar[r] \ar[d] & \PP^n  \ar[d] \\
+\PP(L^\perp) \ar[r] & \PP(V)
+}
+\]
+and
+\[
+D_{int}(X_L) = \A_L.
+\]
+Note that $X_L$ is the base locus of $L$.
+
+
+From this, we give the following vague definition.
+
+\begin{defn}
+A \textbf{homological projective dual} ($HP^\vee$) of $\PP^n \to \PP(V)$ is some $Y \to \PP(V^*)$ such that $D(Y) = \A$. 
+\end{defn}
+
+\begin{ex}
+If $d = 1$, then $HP^\vee = \emptyset \subset \PP(V^*)$.
+\end{ex}
+
+\begin{ex}(Kapranov, reinterpreted by Kuznetsov) 
+If $d = 2$, with $\{s = 0\} = Q \subset \PP^n$, then
+\[
+D(Q) = \left<D(Cl_0(s)), \ldots\right>
+\]
+where $Cl_0(s)$ is the appropriate Clifford algebra. We have $D(Cl_0(s)) \approx D(\pt \amalg \pt)$, but this identification $\approx$ is noncanonical, and the two (spinor) bundles switch as you vary in a family. Therefore,
+\[
+HP^\vee = (V^*, Cl_0).
+\]
+
+Given two such quadrics $Q_0$ and $Q_1$ that span some pencil $L \subset V^*$, so $Q_0 \cap Q_1$ is the base locus and
+\begin{align*}
+D_{int}(Q_0 \cap Q_1) & = D_{int}(\H_L) \\
+&= D(\PP(L), Cl_0) \\
+&= D(C)
+\end{align*}
+where $C$ arises from a double cover of $\PP(L) = \PP^1$.
+\end{ex}
+
+When $\dim L =3$,
+\begin{align*}
+D_{int}(Q_0 \cap Q_1 \cap Q_2) &= D(\PP(L), Cl_0)\\
+&= D(K3, \alpha)
+\end{align*}
+where the final category consits of ``$\alpha$-twisted sheaves" and the K3 surface is obtained as a branched cover of $\PP(L) = \PP^2$. The Brauer class $\alpha$ is needed because of the non-canonical identification $D(Cl_0) \approx D(\pt \amalg \pt)$, where the two spinor bundles can move around and switch.
+
+However, is no Azumaya algebra in general case (for more than four quadrics), and things can get complicated. The definitive reference for such results in Addington's thesis \textit{Spinor sheaves and complete intersections of quadrics}.
+
+
+
+We conclude with an interesting result on the relation between orthogonal decomposition and its relation to Brauer classes.
+
+\begin{thm}(Bernardara)
+Consider a $\PP^n$-bundle
+\[
+p: Y \to X
+\]
+i.e. a bundle such that \'etale-locally on $X$, we have $p^{-1}(U) = U \times \PP^n$ and let $\beta$ denote the associated Brauer class.  Then
+\[
+D(Y) = \left<p^*D(X), p^*(D(X, \beta) \otimes \Oh_p(1), \ldots, p^*D(X, \beta^n) \otimes \Oh_p(n)\right>,
+\]
+where the relative bundles $\Oh_p(k)$ are interpreted as (appropriately) twisted sheaves.
+\end{thm}
+
+
+
+\end{document}
