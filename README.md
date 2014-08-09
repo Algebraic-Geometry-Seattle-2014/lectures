@@ -19,6 +19,7 @@ The speakers were
 - Sam Raskin
   * Scribe: Martin Ulirsch
 - Rekha Thomas
+  * PDF provided by Rekha Thomas
 - John Calabrese
   * Scribe: Brian Hwang
 - Jennifer Park
