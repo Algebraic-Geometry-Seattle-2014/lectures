@@ -9,6 +9,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{amsfonts}
+\usepackage{amsrefs}
 \usepackage{mathrsfs}
 \usepackage{xspace}
 \usepackage{tikz}
@@ -94,7 +95,7 @@ Let $X$ be an algebraic K3 surface, with polarization $L$. Then:
 	\end{matrix}
 	\]
 	\item As a lattice with intersection pairing, $H^2(X,\mathbb{Z})$ is isomorphic to 
-	$\mathbb{H}^3 \oplus (E_8)^2$.
+	$\mathbb{H}^3 \oplus (-E_8)^2$.
 	%\item The group $\Pic^0(X)=\set{D \in \Pic X \text{ such that } DL=0}$ is trivial (Rizzo).
 	% Hm, the \Pic^0 could mean the component of $L$ of $\Pic X$...
 	\item The Picard group $\Pic(X)$ is a sublattice of 
@@ -109,7 +110,7 @@ Let $X$ be an algebraic K3 surface, with polarization $L$. Then:
 \label{sec:rational_curves_on_k3_surfaces}
 
 The first existence results are the following.
-\begin{theorem}[Bogomolov--Mumford 70's]
+\begin{theorem}[Bogomolov--Mumford 70's, Li--Liedtke '12 in char $p$]
 \label{theorem:bogomolov-mumford}
 Let $X$ be a polarized K3 surface over an algebraically closed field.
 Then $X$ contains at least one rational curve.
@@ -121,7 +122,7 @@ We do not get, a priori, infinitely many rational curves by varying the class $D
 because the representative of $D$ produced by the theorem may not be reduced.
 \end{remark}
 
-\begin{theorem}[Bogomolov--Tschinkel 99']
+\begin{theorem}[\cite{BT}]
 \label{theorem:bogomolov-tschinkel}
 An elliptic K3 surface over an algebraically closed field contains infinitely many rational curves.
 \end{theorem}
@@ -145,7 +146,7 @@ For the purpose of this talk, we define the Tate--Shafarevich group $\Sha(X/\mat
 a Jacobian fibration $X/\mathbb{P}^1$ as the set of isomorphism classes of elliptic fibrations
 $E$ such that $J(E)$ is isomorphic to $X$.
 
-\begin{theorem}[Shafarevich, 60's]
+\begin{theorem}[Shafarevich, '61]
 $\Sha(X/\mathbb{P}^1)=\Trans(X) \otimes \mathbb{Q}/\mathbb{Z}$
 \end{theorem} 
 
@@ -235,8 +236,8 @@ The generic K3 surface has Picard rank $1$, and \Cref{theorem:bogomolov-tschinke
 generic K3 surfaces are potentially dense.
 
 However, we do know that there are infinitely many rational curves in $\bar{\mathbb{Q}}$,
-by recent work of Bogomolov--Hasset--Tschinkel and Li--Liedtke in 2013.
-\begin{theorem}[BHT, LL]
+by recent work of Bogomolov--Hasset--Tschinkel and Li--Liedtke in 2012.
+\begin{theorem}[\cite{BHT}, \cite{LL}]
 Let $X$ be an odd Picard rank K3 surface over an algebraically closed field of characteristic zero.
 Then there are infinitely many rational curves on $X$.
 \end{theorem}
@@ -315,7 +316,7 @@ A stable map $f:R \to \mathcal{X}_{\prime}$ is rigid if
 We can't find a rigid map over an arbitrary $D$, but we can construct one for $D+kR$, where $R$ is a 
 \emph{rigidifier}.
 \begin{definition}
-A rigidifier is a morphism $f\from \mathbb{P}^1 \to X$ to a surface such that
+A rigidifier is a stable map $f\from \mathbb{P}^1 \to X$ to a surface such that
 \begin{itemize}
 	\item $f\from \mathbb{P}^1 \to f(\mathbb{P}^1)=R$ is birational,
 	\item $R$ has at most nodal singularities,
@@ -329,7 +330,7 @@ For any effective divisor $D \subset \mathcal{X}_\prime$ which is supported on i
 there is a rigid map $f:C \to \mathcal{X}_\prime$ from a nodal connected arithmetic genus zero curve $C$,
 such that $f(C)=D+kR$, where $R$ is a rigidifier.
 \end{proposition}
-We give a ``proof by picture'' of this proposition (but unfortunately the picture will be suppressed from the notes). The idea is to take $f_D:\tilde{D} \to \mathcal{X}_\prime$ a disconnected union of the normalization 
+We give a ``proof by picture'' of this proposition (see pg. 8 of \cite{LL}). The idea is to take $f_D:\tilde{D} \to \mathcal{X}_\prime$ a disconnected union of the normalization 
 of the components of $D$ (taking the appropriate number of copies of each normalization, so that $f_D(\tilde{D})=D$). Now we glue several copies of the rigidifier $\mathbb{P}^1 \to R \subset \mathcal{X}_\prime$ to
 make $\tilde{D}$ a connected curve, but still preserving the conditions of \Cref{proposition:rigid-conditions}.
 For example, if $f:\mathbb{P}^1 \to R$ is a rigidifier and $f(t_1)=f(t_2)=\eta$ is a node of $R$,
@@ -337,4 +338,48 @@ then we may glue two copies of the rigidifier by identifying the $t_1$ point of 
 \end{proof}
 % section rational_curves_on_the_odd_picard_rank_case (end)
 
+\section{References}
+\begin{biblist}*{labels={alphabetic}}
+\bib{BT}{article}{
+   author={Bogomolov, F. A.},
+   author={Tschinkel, Yu.},
+   title={Density of rational points on elliptic $K3$ surfaces},
+   journal={Asian J. Math.},
+   volume={4},
+   date={2000},
+   number={2},
+   pages={351--368},
+   issn={1093-6106},
+   review={\MR{1797587 (2002b:14025)}},
+}
+
+\bib{BHT}{article}{
+   author={Bogomolov, Fedor},
+   author={Hassett, Brendan},
+   author={Tschinkel, Yuri},
+   title={Constructing rational curves on K3 surfaces},
+   journal={Duke Math. J.},
+   volume={157},
+   date={2011},
+   number={3},
+   pages={535--550},
+   issn={0012-7094},
+   review={\MR{2785829 (2012d:14061)}},
+   doi={10.1215/00127094-1272930},
+}
+
+\bib{LL}{article}{
+   author={Li, Jun},
+   author={Liedtke, Christian},
+   title={Rational curves on K3 surfaces},
+   journal={Invent. Math.},
+   volume={188},
+   date={2012},
+   number={3},
+   pages={713--727},
+   issn={0020-9910},
+   review={\MR{2917181}},
+   doi={10.1007/s00222-011-0359-y},
+}
+\end{biblist}
 \end{document}
